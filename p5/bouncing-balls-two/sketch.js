@@ -1,6 +1,3 @@
-//var x = 46;
-//var y = 78;
-
 var ballA;
 var ballB;
 
@@ -17,8 +14,6 @@ function setup() {
     ballA = new Ball();
     ballB = new Ball();
     
-//    ellipse(ballA.x,ballA.y,r,r);
-//    ellipse(ballB.x,ballB.y,r,r);
 }
 
 function draw(){
@@ -35,8 +30,6 @@ function draw(){
 
 
 function Ball(){
-//    this.x = r + random(300);
-//    this.y = r + random(300);
     this.position = createVector(r + random(300), r + random(300));
     this.speed = random(10);
     this.dir = p5.Vector.random2D();
