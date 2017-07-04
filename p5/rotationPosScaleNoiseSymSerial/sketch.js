@@ -4,8 +4,8 @@
 // Terminal command to install p5.serialserver:  npm install p5.serialserver
 // Terminal command to start server:  node ~/node_modules/p5.serialserver/startserver.js
 
-var serial;                            // variable to hold an instance of the serialport library
-var options = {baudrate: 9600};      // set baudrate to 9600; must match Arduino baudrate
+var serial;   //use                         // variable to hold an instance of the serialport library
+var options = {baudrate: 9600};  //use    // set baudrate to 9600; must match Arduino baudrate
 var inData;                            // for incoming serial data
 var inDataNorm;
 var inDataSlope;
@@ -21,12 +21,12 @@ var startgreen;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(0);
-  
-  serial = new p5.SerialPort(); 
-  serial.on('data', serialEvent); 
-  serial.on('error', serialError); 
 
-  serial.open("/dev/cu.usbmodem1411");   serial.clear();
+  serial = new p5.SerialPort(); //use
+  serial.on('data', serialEvent); //use
+  serial.on('error', serialError); //use
+
+  serial.open("/dev/cu.usbmodem1411");   serial.clear(); //use
   rectMode(CENTER);
   fill(300, 50);
   stroke(255, 10);
@@ -35,17 +35,17 @@ function setup(){
   direction = 1;
   startred = Math.abs(random(0, 255));
   startgreen = Math.abs(random(0, 255));
-  startblue = Math.abs(random(0, 255));  
+  startblue = Math.abs(random(0, 255));
 }
 
-function serialEvent() {
+function serialEvent() { // use
   // read a byte from the serial port:
   var inByte = serial.read();
   //console.log("inByte: " + inByte);
   inData = inByte;
 }
 
-function serialError(err) {
+function serialError(err) { //use
   console.log('Something went wrong with the serial port.');
   console.log(err);
 }
@@ -63,7 +63,7 @@ function draw(){
 	inDataSlope = Math.pow(inDataNorm, 2);
 	background(startred - updown, startgreen - updown, startblue - updown, map(inDataSlope, 0, 1, 1, 255));
 
-	var ang1 = TWO_PI * noise(0.01*frameCount + 10); //note: changed noise ampl in p5 lib to 0.75 from 0.5	
+	var ang1 = TWO_PI * noise(0.01*frameCount + 10); //note: changed noise ampl in p5 lib to 0.75 from 0.5
 	var ang2 = TWO_PI * noise(0.01*frameCount + 20);
 	var ang3 = TWO_PI * noise(0.01*frameCount + 30);
 	var rx = 60 * noise(0.01*frameCount + 40);
@@ -92,15 +92,15 @@ function draw(){
 			rotate(ang3);
 			if (inData){
         		translate(map(dataSmoov, 0, 50, 0, windowWidth), map(dataSmoov, 0, 50, 0, windowHeight));
-        	} 
-       
+        	}
+
 			if (trans2 <=0){
 				strokeWeight(Math.abs(trans2));
 			}
-			fill(255-i*30, 255, 0, trans2); 
+			fill(255-i*30, 255, 0, trans2);
 			rect(rx, 0, size2, size2, ang3*ang2, ang3*ang2, ang3*ang2, ang3*ang2);
 			pop();
-		}		
+		}
 		translate()
 		pop();
 	}
@@ -115,5 +115,3 @@ function draw(){
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
-
