@@ -1,8 +1,8 @@
 //credits: Gene Kogan & THIS WORKS: https://codepen.io/jonathanSRP/pen/zzxgMR
 // If using p5 Editor be sure to choose File > Import Library > p5.serialport.js from the P5 IDE main menu to load serial library
 
-// Terminal command to install p5.serialserver:  npm install p5.serialserver
-// Terminal command to start server:  node ~/node_modules/p5.serialserver/startserver.js
+// Terminal command to install p5.serialserver:  sudo npm install -g p5.serialserver
+// Terminal command to start server:  p5serial
 
 var serial;   //use                         // variable to hold an instance of the serialport library
 var options = {baudrate: 9600};  //use    // set baudrate to 9600; must match Arduino baudrate
